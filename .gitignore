@@ -1,0 +1,67 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Datasets (too large for git — stored on scratch/HPC)
+datasets/
+*.mat
+*.hdf5
+*.npy
+*.npz
+*.h5
+
+# Model weights / checkpoints
+checkpoints/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.onnx
+
+# Results / logs (reproducible from code)
+results/
+logs/
+*.log
+*.csv
+*.json
+slurm-*.out
+
+# Plots / figures (reproducible)
+results_plots/
+results_plots.zip
+*.png
+*.jpg
+*.jpeg
+*.pdf
+*.svg
+
+# HuggingFace / torch cache
+hf_cache/
+torch_cache/
+.cache/
+
+# Conda env (too large)
+conda_envs/
+
+# Diagnostic/scratch files
+diag_*.py
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo

@@ -1,0 +1,52 @@
+# Master configuration for MDE viewpoint benchmarking project.
+# All paths are relative to the project root unless absolute.
+
+# --- Paths ---
+data_root: "./datasets"
+tartanair_root: ""
+hypersim_root: "./datasets/hypersim"
+nyu_root: "./datasets/nyu_depth_v2"
+kitti_root: ""
+split_dir: "./mde_viewpoint/data/splits"
+results_dir: "./results"
+checkpoint_dir: "./checkpoints"
+
+# --- Image / dataloader ---
+image_size: 518
+batch_size: 8
+num_workers: 4
+
+# --- LoRA / training ---
+lora_rank: 8
+lora_alpha: 16
+lora_dropout: 0.1
+lora_target_modules: ["query", "value"]
+lr: 1.0e-4
+weight_decay: 0.01
+max_epochs: 20
+early_stop_patience: 3
+
+# --- Reproducibility ---
+seed: 42
+device: "cuda"
+
+# --- Experiment grid ---
+models: ["dav2", "zoedepth", "midas", "marigold"]
+categories: ["A", "B", "C", "D", "E"]
+n_finetune_samples: [10, 20, 35, 49]
+
+# --- Viewpoint pitch bins (degrees) ---
+pitch_bins:
+  A: [0.0, 15.0]      # eye-level
+  B: [30.0, 45.0]     # elevated oblique
+  C: [55.0, 65.0]     # steep oblique (~60)
+  D: [75.0, 90.0]     # top-down
+  # E is selected separately by environment tag (fog / low light)
+
+# --- Per-category sample budgets ---
+n_eval_per_category: 1500
+n_finetune_per_category: 500
+
+# --- Metric eval clipping (meters) ---
+min_depth: 0.1
+max_depth: 80.0
